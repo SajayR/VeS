@@ -172,37 +172,6 @@ wandb:
 
 The dense loss produces **sharp, accurate localization heatmaps** that correctly highlight spoken objects across multiple Indian languages, while global loss fails to provide meaningful spatial attention.
 
-## Key Features
-
-### Modular Architecture
-- Clean separation of concerns across model, training, data, and evaluation components
-- Easy to extend and modify individual components
-- Academic-quality code structure with comprehensive docstrings
-
-### Memory Efficient
-- Frozen vision backbone with cached features
-- Mixed precision training (BF16)
-- Gradient checkpointing and memory management
-- Runs on single 24GB GPU
-
-### Robust Training
-- Automatic checkpoint resumption (including mid-epoch)
-- Deterministic data loading for reproducibility
-- Comprehensive logging (W&B integration)
-- Built-in evaluation during training
-
-### Visualization
-- Real-time attention heatmap generation
-- MP4 video outputs with synchronized audio
-- Configurable visualization frequency
-- Matplotlib integration for research plots
-
-### Evaluation
-- Multiple similarity aggregation methods
-- Comprehensive retrieval metrics
-- Embedding caching for faster re-evaluation
-- Memory-efficient chunked processing
-
 ## Methodology
 
 ### Loss Functions
@@ -241,18 +210,6 @@ The dense loss produces **sharp, accurate localization heatmaps** that correctly
 3. **Monitor attention visualizations** to verify model learning
 4. **Adjust batch size** based on your GPU memory
 5. **Enable gradient accumulation** for effective larger batch sizes
-
-## Contributing
-
-We welcome contributions! Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes following the existing code style
-4. Add tests if applicable
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
 
 ## Contact
 
