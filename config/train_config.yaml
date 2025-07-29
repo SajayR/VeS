@@ -1,0 +1,68 @@
+# VeS Training Configuration
+
+# Model Configuration
+model:
+  loss_type: "global"  # Options: "dense", "global", "dense_global"
+  embedding_dim: 256
+  hubert_name: "ntu-spml/distilhubert"
+  use_cached_visual_features: true
+  cached_features_base_path: "/workspace/cached_features/dinov2_large"
+
+# Training Configuration
+training:
+  # Device and compute settings
+  device: "cuda"
+  use_amp: true
+  
+  # Data settings
+  batch_size: 92
+  num_workers: 8
+  data_seed: 42  # Fixed seed for deterministic data ordering
+  
+  # Training schedule
+  num_epochs: 5
+  
+  # Optimization
+  learning_rate: 3.0e-4
+  gradient_accumulation_steps: 2
+  warmup_ratio: 0.1
+  optimizer: "adam8bit"  # Options: "adamw", "adam8bit"
+  
+  # Checkpointing
+  output_dir: "checkpoints-global-loss"
+  checkpoint_every_steps: 20000
+  auto_resume: true
+  
+  # Visualization
+  viz_every_steps: 40000
+  viz_batch_limit: 32
+  
+  # Evaluation
+  eval_every_steps: 20000
+  eval_batch_size: 32
+
+# Data Configuration  
+data:
+  # Add any dataset-specific configuration here
+  max_audio_length: null  # Set to limit audio length if needed
+  image_size: 224
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_file: "training.log"
+
+# Weights & Biases Configuration
+wandb:
+  enabled: true
+  project: "VeS"
+  name: "global-loss"
+  log_freq: 1
+  watch_model: false
+  tags: []
+  notes: ""
+
+# Loss Configuration
+loss:
+  tv_weight: 0.1  # Temporal variation regularization weight
+  global_weight: 0.3  # Weight for global loss when using dense_global
