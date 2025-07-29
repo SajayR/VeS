@@ -18,6 +18,17 @@ Using a multilingual subset of Project Vaani spanning dozens of Indian languages
 
 **Key Finding:** The dense objective delivers a **+59% relative R@1** (Audio→Visual) improvement over global pooling and substantially lower mean/median ranks, while consistently producing sharp zero-shot localization heatmaps of spoken objects—despite keeping the vision backbone entirely frozen.
 
+## Zero-Shot Localization Results
+
+Our dense contrastive approach produces sharp localization heatmaps even with a frozen vision backbone:
+
+<div align="center">
+  <img src="static/heatmap_1.png" alt="Localization Heatmap 1">
+  <img src="static/heatmap_2.png" alt="Localization Heatmap 2">
+</div>
+
+These heatmaps demonstrate the model's ability to precisely locate spoken objects in multilingual audio-visual content without any supervised localization training.
+
 ## Architecture Overview
 
 ```
