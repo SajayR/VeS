@@ -40,22 +40,7 @@ Using a multilingual subset of Project Vaani spanning dozens of Indian languages
             └─────────────────┘
 ```
 
-## Quick Start
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/SajayR/VeS.git
-cd VeS/src
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Training
-
-The codebase provides a clean, modular training pipeline:
+## Training
 
 ```bash
 # Basic training with default configuration
@@ -88,9 +73,6 @@ python evaluate.py --test-sim
 ```
 
 ## Project Structure
-
-The codebase is organized into clean, modular components:
-
 ```
 src/
 ├── models/                 # VeS model components
