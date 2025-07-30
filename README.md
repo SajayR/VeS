@@ -54,7 +54,7 @@ These heatmaps demonstrate the model's ability to precisely locate spoken object
 ## Training
 
 ```bash
-# Basic training with default configuration
+# Training with default configuration
 python train.py
 
 # Custom configuration
@@ -81,78 +81,6 @@ python evaluate.py --use-cached-features --cached-features-path /path/to/cache
 
 # Test similarity computation
 python evaluate.py --test-sim
-```
-
-## Project Structure
-```
-src/
-├── models/                 # VeS model components
-│   ├── audio_encoder.py   # DistilHuBERT audio encoder
-│   ├── vision_encoder.py  # DINOv2 vision encoder with adapters
-│   ├── ves_model.py       # Main VeS model
-│   ├── losses.py          # Loss computation utilities
-│   └── __init__.py
-│
-├── training/              # Training infrastructure
-│   ├── trainer.py         # Main trainer class
-│   ├── checkpoint_manager.py  # Checkpoint handling
-│   ├── data_manager.py    # Data loading with deterministic shuffling
-│   ├── config_loader.py   # YAML configuration loading
-│   └── __init__.py
-│
-├── data/                  # Data processing
-│   ├── dataset.py         # VAAPairedDataset implementation
-│   ├── audio_processing.py    # Audio loading and preprocessing
-│   ├── transforms.py      # Image preprocessing utilities
-│   └── __init__.py
-│
-├── visualization/         # Attention visualization
-│   ├── ves_visualizer.py  # Main visualization class
-│   ├── video_encoder.py   # MP4 video generation
-│   ├── heatmap_renderer.py    # Attention heatmap rendering
-│   ├── image_utils.py     # Image processing utilities
-│   └── __init__.py
-│
-├── evaluation/            # Retrieval evaluation
-│   ├── retrieval_evaluator.py    # Main evaluation class
-│   ├── similarity_computer.py    # Similarity computation
-│   ├── embedding_extractor.py    # Embedding extraction with caching
-│   ├── metrics.py         # Evaluation metrics
-│   └── __init__.py
-│
-├── config/
-│   └── train_config.yaml # Training configuration
-│
-├── train.py              # Main training script
-├── evaluate.py           # Standalone evaluation script
-└── README.md            # This file
-```
-
-## Configuration
-
-Training is configured through YAML files. Key parameters:
-
-```yaml
-# Model Configuration
-model:
-  loss_type: "global"  # Options: "dense", "global", "dense_global"
-  embedding_dim: 256
-  hubert_name: "ntu-spml/distilhubert"
-  use_cached_visual_features: true
-
-# Training Configuration  
-training:
-  batch_size: 92
-  num_epochs: 5
-  learning_rate: 3.0e-4
-  gradient_accumulation_steps: 2
-  checkpoint_every_steps: 20000
-  
-# Logging
-wandb:
-  enabled: true
-  project: "VeS"
-  name: "experiment-name"
 ```
 
 ## Results
@@ -202,14 +130,6 @@ The dense loss produces **sharp, accurate localization heatmaps** that correctly
 - **Vision**: 224×224 images, DINOv2-Large patch extraction
 - **Multilingual**: 83+ Indian languages and dialects
 - **No supervision**: No captions, transcripts, or spatial annotations
-
-## Training Tips
-
-1. **Start with cached features** for faster iteration
-2. **Use dense loss** for best retrieval and localization performance  
-3. **Monitor attention visualizations** to verify model learning
-4. **Adjust batch size** based on your GPU memory
-5. **Enable gradient accumulation** for effective larger batch sizes
 
 ## Contact
 
